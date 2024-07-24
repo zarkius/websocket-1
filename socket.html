@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket.io Hora Actual</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+  </head>
+<body>    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const socket = io.connect('http://localhost:4000');
+        
+        socket.on('horaActual', function(data) {
+          document.getElementById('hora').innerText = data.hora;
+          document.getElementById('clientes').innerText = data.numClientes;
+        });
+      });
+    </script>
+    <h1>Hora Actual</h1>
+    <p id="hora"></p>
+    <p id="clientes"></p>
+</body>
+</html>
